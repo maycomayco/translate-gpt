@@ -24,10 +24,8 @@ function App () {
       <Header />
 
       <main className='container'>
-        <section>
-          <Form handleSubmit={handleSubmit} handleOnChange={handleOnChange} />
-          <Translations translation={translation} loading={loading} />
-        </section>
+        <Form handleSubmit={handleSubmit} handleOnChange={handleOnChange} />
+        <Translations translation={translation} loading={loading} />
       </main>
 
       <Footer />
