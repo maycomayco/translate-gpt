@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import { useTranslationGPT } from './hooks/useTranslationGPT'
+import { Header } from './components/Header'
+import { Form } from './components/Form'
+import { Translations } from './components/Translations'
 import './App.css'
+import { Footer } from './components/Footer'
 
 function App () {
   const [textareaValue, setTextareaValue] = useState('')
-  const { translation, loading, setQueryText } = useTranslationGPT()
+  const { translation, loading, getTranslation } = useTranslationGPT({ query: textareaValue })
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    setQueryText(textareaValue)
+    await getTranslation()
   }
 
   const handleOnChange = (event) => {
@@ -17,32 +21,16 @@ function App () {
 
   return (
     <>
-      <header>
-        <h1>Translate GPT</h1>
-      </header>
+      <Header />
 
-      <main>
+      <main className='container'>
         <section>
-          <h2>Ingrese su consulta</h2>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor='texto'>Texto:</label>
-            <textarea id='textToTranslate' name='textToTranslate' rows='5' cols='40' onChange={handleOnChange} />
-            <button type='submit'>Enviar</button>
-          </form>
-        </section>
-
-        <section>
-          <h2>Texto generado</h2>
-          {loading && <p>Translating...</p>}
-          {!loading && Object.keys(translation).length > 0 &&
-            <>
-              <p><strong>W: </strong>{translation.writing}</p>
-              <p><strong>S: </strong>{translation.speaking}</p>
-              <p><strong>C: </strong>{translation.coloquial}</p>
-            </>}
-
+          <Form handleSubmit={handleSubmit} handleOnChange={handleOnChange} />
+          <Translations translation={translation} loading={loading} />
         </section>
       </main>
+
+      <Footer />
     </>
   )
 }
