@@ -1,13 +1,25 @@
+import { LoaderParagraph } from './LoaderParagraph'
+
 export const Translations = ({ translation, loading }) => {
   return (
-    <section className='translations'>
-      {loading && <p aria-busy={loading}>Generando la traduccion</p>}
-      {!loading && Object.keys(translation).length > 0 &&
-        <div className='translations__results'>
-          <p><strong>W - </strong>{translation.writing}</p>
-          <p><strong>S - </strong>{translation.speaking}</p>
-          <p><strong>C - </strong>{translation.coloquial}</p>
-        </div>}
+    <section className="flex flex-col gap-2">
+      {loading && <LoaderParagraph />}
+      {!loading && Object.keys(translation).length > 0 && (
+        <>
+          <p>
+            <strong>Writing: </strong>
+            {translation.writing}
+          </p>
+          <p>
+            <strong>Speaking: </strong>
+            {translation.speaking}
+          </p>
+          <p>
+            <strong>Coloquial: </strong>
+            {translation.coloquial}
+          </p>
+        </>
+      )}
     </section>
   )
 }
