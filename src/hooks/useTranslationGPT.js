@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+
 import { createTranslation } from '../services/open-ai'
 
 // este hook recibe como parametro el texto a traducir
@@ -14,9 +15,9 @@ export const useTranslationGPT = ({ query }) => {
       setLoading(true)
       previousQuery.current = query
       const response = await createTranslation({ query })
+
       setTranslation(response)
     } catch (error) {
-      console.log(error)
       throw new Error('Error getting translations')
     } finally {
       setLoading(false)
