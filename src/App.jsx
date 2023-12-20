@@ -13,11 +13,8 @@ function App() {
   const { translation, loading, getTranslation } = useTranslationGPT({
     query: textareaValue,
   })
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    await getTranslation()
-  }
-  const handleOnChange = (event) => {
+
+  const setQuery = (event) => {
     setTextareaValue(event.target.value)
   }
 
@@ -25,10 +22,14 @@ function App() {
     <>
       <Header />
 
-      <section className="flex flex-col gap-4">
-        <Form handleOnChange={handleOnChange} handleSubmit={handleSubmit} />
+      <div className="flex flex-col gap-8">
+        <Form
+          getTranslation={getTranslation}
+          isLoading={loading}
+          setQuery={setQuery}
+        />
         <Translations loading={loading} translation={translation} />
-      </section>
+      </div>
 
       <Footer />
     </>
