@@ -2,11 +2,11 @@ import { useRef, useState } from 'react'
 
 import { createTranslation } from '../services/open-ai'
 
-// este hook recibe como parametro el texto a traducir
+// este hook recibe como parámetro el texto a traducir
 export const useTranslationGPT = ({ query }) => {
   const [translation, setTranslation] = useState({})
   const [loading, setLoading] = useState(false)
-  const previousQuery = useRef(query) // con esto controlamos que no se vuelva a realizar la misma peticion
+  const previousQuery = useRef(query) // con esto controlamos que no se vuelva a realizar la misma petición
 
   const getTranslation = async () => {
     if (query === previousQuery.current) return
