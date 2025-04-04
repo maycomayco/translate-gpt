@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form'
 
-// export const Form = ({ handleSubmit, handleOnChange }) => {
 export const Form = ({ setQuery, getTranslation, isLoading }) => {
   const {
     register,
@@ -16,6 +15,7 @@ export const Form = ({ setQuery, getTranslation, isLoading }) => {
     >
       <div>
         <textarea
+          autoFocus
           className="focus:ring-primary-500 focus:border-primary-500  block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 "
           id="prompt"
           placeholder="Introduce el texto el cual deseas que se genere una traducción"
