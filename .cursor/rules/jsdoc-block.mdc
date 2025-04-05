@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# About JSDocs blocks
+
+- If I'm requesting for jsdoc block comments, you should always write down those in American english
+- Be verbose for the comments, params and everything
