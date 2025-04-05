@@ -16,7 +16,7 @@ export const Form = ({ setQuery, getTranslation, isLoading }) => {
       <div>
         <textarea
           autoFocus
-          className="focus:ring-primary-500 focus:border-primary-500  block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 "
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
           id="prompt"
           placeholder="Introduce el texto el cual deseas que se genere una traducción"
           rows="3"
@@ -27,6 +27,7 @@ export const Form = ({ setQuery, getTranslation, isLoading }) => {
         {errors.prompt && (
           <span className="ml-2 text-sm text-red-500">
             This field is required
+            {/* {JSON.stringify(errors.prompt, 0, false)} */}
           </span>
         )}
       </div>
